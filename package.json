@@ -1,0 +1,51 @@
+{
+  "name": "repatch-example-electron-app",
+  "version": "0.0.1",
+  "description": "Todo electron app to representing repatch",
+  "main": "lib/main",
+  "scripts": {
+    "babel": "babel src -d lib",
+    "babel:w": "babel src -d lib -w",
+    "build": "rm -rf lib && npm run babel",
+    "build:w": "npm run babel:w",
+    "start": "electron lib/main",
+    "start-prod": "NODE_ENV=production npm start"
+  },
+  "authors": [
+    "Péter Hauszknecht <peter.hauszknecht@jaystack.com> (https://github.com/jayhasyee)"
+  ],
+  "keywords": [
+    "dispatch",
+    "redux",
+    "reducer",
+    "state",
+    "predictable",
+    "functional",
+    "immutable",
+    "flux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaystack/repatch-example-electron-app.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaystack/repatch-example-electron-app/issues"
+  },
+  "dependencies": {
+    "electron": "^1.7.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "repatch": "0.0.11"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
+  }
+}
