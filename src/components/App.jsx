@@ -4,7 +4,16 @@ import { connect } from 'react-redux'
 import { fetchTodos, addTodo } from '../actions'
 import Item from './Item'
 
-class App extends React.PureComponent {
+@connect(
+  state => ({
+    todos: state.todos
+  }),
+  {
+    fetchTodos,
+    addTodo
+  }
+)
+export default class App extends React.PureComponent {
   static propTypes = {
     todos: PropTypes.arrayOf(
       PropTypes.shape({
@@ -31,14 +40,3 @@ class App extends React.PureComponent {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  todos: state.todos
-})
-
-const mapDispatchToProps = {
-  fetchTodos,
-  addTodo
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
