@@ -9,7 +9,20 @@ import {
   confirmRemovingTodo
 } from '../actions'
 
-class Item extends React.PureComponent {
+@connect(
+  (state, { todoIndex }) => ({
+    todo: state.todos[todoIndex],
+    isRemovingTodo: state.removingTodoId === state.todos[todoIndex].id
+  }),
+  {
+    checkTodo,
+    updateTodo,
+    removeTodo,
+    cancelRemovingTodo,
+    confirmRemovingTodo
+  }
+)
+export default class Item extends React.PureComponent {
   static propTypes = {
     todoIndex: PropTypes.number,
     todo: PropTypes.shape({
@@ -57,18 +70,3 @@ class Item extends React.PureComponent {
     )
   }
 }
-
-const mapStateToProps = (state, { todoIndex }) => ({
-  todo: state.todos[todoIndex],
-  isRemovingTodo: state.removingTodoId === state.todos[todoIndex].id
-})
-
-const mapDispatchToProps = {
-  checkTodo,
-  updateTodo,
-  removeTodo,
-  cancelRemovingTodo,
-  confirmRemovingTodo
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Item)
