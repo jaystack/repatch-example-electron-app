@@ -1,4 +1,4 @@
-import Store, { thunk, Thunk } from 'repatch'
+import Store, { thunk } from 'repatch'
 import api from './api'
 
 export default new Store({
