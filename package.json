@@ -39,7 +39,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "repatch": "^1.2.0"
+    "repatch": "^1.2.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
