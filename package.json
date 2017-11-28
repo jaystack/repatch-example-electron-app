@@ -9,7 +9,9 @@
     "build": "rm -rf lib && npm run babel",
     "build:w": "npm run babel:w",
     "start": "electron lib/main",
-    "start-prod": "NODE_ENV=production npm start"
+    "start-prod": "NODE_ENV=production npm start",
+    "test": "jest",
+    "test:w": "jest --watch"
   },
   "authors": [
     "Péter Hauszknecht <peter.hauszknecht@jaystack.com> (https://github.com/jayhasyee)"
@@ -43,10 +45,24 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1"
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "jest": "^21.2.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testMatch": [
+      "**/test/**/*.spec.js"
+    ],
+    "testEnvironment": "node"
   }
 }

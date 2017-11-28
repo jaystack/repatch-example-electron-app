@@ -1,10 +1,11 @@
-function call(method, path, query, body) {
+export function call(method, path, query, body) {
   return () => async (dispatch, getState, api) => {
     dispatch(state => ({ ...state, isFetching: true }))
     try {
       return await api[path][method.toLowerCase()](query, body)
     } catch (error) {
       dispatch(state => ({ ...state, error: error.message }))
+      throw error;
     } finally {
       dispatch(state => ({ ...state, isFetching: false }))
     }
