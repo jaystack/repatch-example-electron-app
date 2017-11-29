@@ -1,4 +1,4 @@
-import { removeTodo, cancelRemovingTodo, call, fetchTodos } from '../src/actions';
+import { removeTodo, cancelRemovingTodo, call, fetchTodos, addTodo } from '../src/actions';
 
 describe('actions', () => {
   describe('sync actions', () => {
@@ -69,6 +69,36 @@ describe('actions', () => {
         expect(dispatch.mock.calls[0][0]()).toHaveProperty('removingTodoId', null);
         expect(dispatch.mock.calls[2][0]()).toHaveProperty('todos', todos);
       });
+
+      it('throws exception', async () => {
+        const dispatch = jest.fn();
+
+        dispatch.mockReturnValueOnce();
+        dispatch.mockReturnValueOnce(Promise.reject(new Error('todo_oops')));
+        await fetchTodos()()(dispatch).catch(err =>
+          expect(err.message).toEqual('todo_oops')
+        );
+        expect(dispatch.mock.calls[0][0]()).toHaveProperty('removingTodoId', null);
+        expect(dispatch.mock.calls.length).toEqual(2);
+
+      });
+
     });
+
+    describe('addTodo', () => {
+
+      it('works properly', async () => {
+        const dispatch = jest.fn();
+
+        const toDo = { id: Math.random().toString(), message: '', checked: false };
+
+        dispatch.mockReturnValueOnce();
+        dispatch.mockReturnValueOnce(Promise.resolve(toDo));
+        await addTodo()()(dispatch);
+        expect(dispatch.mock.calls[0][0]()).toHaveProperty('removingTodoId', null);          
+      })
+
+    });
+
   });
 });
