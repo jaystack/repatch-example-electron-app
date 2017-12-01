@@ -3,12 +3,12 @@ import { removeTodo, cancelRemovingTodo, call, fetchTodos, addTodo } from '../sr
 describe('actions', () => {
   describe('sync actions', () => {
     it('removeTodo', () => {
-      const state = { a: 1, b: 2 };
+      const state = { a: 1, b: 2, removingTodoId: null };
       expect(removeTodo(10)(state)).toEqual({ a: 1, b: 2, removingTodoId: 10 });
     });
 
     it('cancelRemovingTodo', () => {
-      const state = { a: 1, b: 2 };
+      const state = { a: 1, b: 2, removingTodoId: 10 };
       expect(cancelRemovingTodo()(state)).toEqual({ a: 1, b: 2, removingTodoId: null });
     });
   });
